@@ -1,3 +1,2 @@
-# Create Addon Template (Forge only)
-Basically Forge MDK + Mixin + Create and its dependency.
-
+# Create: Relocate
+Create mod addon about storage organize in minecraft.
