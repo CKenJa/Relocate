@@ -1,10 +1,12 @@
 {
   "required": true,
   "priority": 1100,
-  "package": "com.example.examplemod.mixin",
+  "package": "mod.ckenja.relocate.mixin",
   "compatibilityLevel": "JAVA_16",
-  "refmap": "examplemod.refmap.json",
-  "mixins": [],
+  "refmap": "relocate.refmap.json",
+  "mixins": [
+    "KanbanBoardTestMixin"
+  ],
   "client": [],
   "injectors": {
     "defaultRequire": 1
