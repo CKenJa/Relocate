@@ -1,15 +1,26 @@
 package mod.ckenja.relocate.content.filter;
 
 import com.simibubi.create.content.logistics.filter.AbstractFilterMenu;
+import mod.ckenja.relocate.Relocate;
+import mod.ckenja.relocate.content.logistics.RelocateNode;
+import mod.ckenja.relocate.foundation.item.ItemStackWrapper;
 import mod.ckenja.relocate.registry.RelocateMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static mod.ckenja.relocate.content.filter.KanbanBoardItem.getKanbanBoardID;
+
 public class KanbanBoardMenu extends AbstractFilterMenu {
+    private UUID uuid;
     public KanbanBoardMenu(MenuType<?> type, int id, Inventory inv, FriendlyByteBuf extraData) {
         super(type, id, inv, extraData);
     }
@@ -41,7 +52,24 @@ public class KanbanBoardMenu extends AbstractFilterMenu {
     }
 
     @Override
+    protected void initAndReadInventory(ItemStack filterItem) {
+        super.initAndReadInventory(filterItem);
+        uuid = getKanbanBoardID(filterItem);
+    }
+    @Override
     protected ItemStackHandler createGhostInventory() {
-        return new ItemStackHandler(18);
+        ItemStackHandler handler = new ItemStackHandler(18);
+        //HashMap<ItemStackWrapper, Integer> itemCountList = Relocate.RELOCATE_SAVED_DATA.getNode(uuid).itemCountList;
+        int i = 0;
+        /*for(Map.Entry<ItemStackWrapper, Integer> entry : itemCountList.entrySet()) {
+            i++;
+            handler.setStackInSlot(i, entry.getKey().getItemStack());
+        }*/
+        return handler;
+    }
+    protected void saveData(ItemStack itemStack){
+        RelocateNode relocateNode = new RelocateNode();
+        relocateNode.itemCountList.put(new ItemStackWrapper(new ItemStack(Items.APPLE)),130);
+        //Relocate.RELOCATE_SAVED_DATA.addNode(new UUID(0L, 0L),relocateNode);
     }
 }

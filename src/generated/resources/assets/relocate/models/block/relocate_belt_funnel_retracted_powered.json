@@ -1,0 +1,10 @@
+{
+  "parent": "relocate:block/belt_funnel/block_retracted",
+  "textures": {
+    "base": "relocate:block/funnel/industrial_iron_funnel",
+    "block": "create:block/industrial_iron_block",
+    "direction": "relocate:block/funnel/industrial_iron_funnel_neutral",
+    "particle": "create:block/industrial_iron_block",
+    "redstone": "relocate:block/funnel/industrial_iron_funnel_powered"
+  }
+}

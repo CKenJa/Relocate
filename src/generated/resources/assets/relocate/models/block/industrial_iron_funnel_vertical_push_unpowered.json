@@ -1,0 +1,11 @@
+{
+  "parent": "relocate:block/funnel/block_vertical",
+  "textures": {
+    "base": "relocate:block/funnel/industrial_iron_funnel",
+    "direction": "relocate:block/funnel/industrial_iron_funnel_push",
+    "frame": "relocate:block/funnel/industrial_iron_funnel_frame",
+    "open": "relocate:block/funnel/funnel_open",
+    "particle": "create:block/industrial_iron_block",
+    "redstone": "relocate:block/funnel/industrial_iron_funnel_unpowered"
+  }
+}

@@ -1,5 +1,6 @@
 package mod.ckenja.relocate.content.filter;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -18,8 +19,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 public class KanbanBoardItem extends Item implements MenuProvider {
+    private static final String idNbtKey = "KanbanBoardID";
 
     public KanbanBoardItem(Properties properties){
         super(properties);
@@ -55,6 +58,14 @@ public class KanbanBoardItem extends Item implements MenuProvider {
             return InteractionResultHolder.success(heldItem);
         }
         return InteractionResultHolder.pass(heldItem);
+    }
+    @Nullable
+    public static UUID getKanbanBoardID(ItemStack itemStack){
+        CompoundTag tag = itemStack.getTag();
+        if (tag == null || !tag.hasUUID(idNbtKey)) {
+            return null;
+        }
+        return tag.getUUID("KanbanBoardID");
     }
 
 }

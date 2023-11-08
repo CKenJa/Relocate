@@ -10,12 +10,13 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 
+import static mod.ckenja.relocate.Relocate.REGISTRATE;
 public class RelocateMenuTypes {
     public static final MenuEntry<KanbanBoardMenu> KANBAN_BOARD =
             register("kanban_board_menu", KanbanBoardMenu::new, () -> KanbanBoardScreen::new);
     private static <C extends AbstractContainerMenu, S extends Screen & MenuAccess<C>> MenuEntry<C> register(
             String name, MenuBuilder.ForgeMenuFactory<C> factory, NonNullSupplier<MenuBuilder.ScreenFactory<C, S>> screenFactory) {
-        return Relocate.registrate()
+        return Relocate.REGISTRATE
                 .menu(name, factory, screenFactory)
                 .register();
     }
