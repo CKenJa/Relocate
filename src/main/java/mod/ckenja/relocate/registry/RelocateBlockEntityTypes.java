@@ -3,6 +3,7 @@ package mod.ckenja.relocate.registry;
 import com.simibubi.create.content.logistics.funnel.FunnelInstance;
 import com.simibubi.create.content.logistics.funnel.FunnelRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import mod.ckenja.relocate.content.filter.RelocateBoardEntity;
 import mod.ckenja.relocate.content.funnel.RelocateFunnelBlockEntity;
 
 import static mod.ckenja.relocate.Relocate.REGISTRATE;
@@ -13,6 +14,11 @@ public class RelocateBlockEntityTypes {
             .instance(() -> FunnelInstance::new)
             .validBlocks(RelocateBlocks.RELOCATE_FUNNEL, RelocateBlocks.RELOCATE_BELT_FUNNEL)
             .renderer(() -> FunnelRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<RelocateBoardEntity> RELOCATE_BOARD = REGISTRATE
+            .blockEntity("relocate_board", RelocateBoardEntity::new)
+            .validBlocks(RelocateBlocks.RELOCATE_BOARD)
             .register();
     public static void register() {
     }

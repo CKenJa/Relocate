@@ -2,14 +2,11 @@ package mod.ckenja.relocate.registry;
 
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.content.logistics.funnel.BeltFunnelGenerator;
-import com.simibubi.create.content.logistics.funnel.FunnelGenerator;
 import com.simibubi.create.content.logistics.funnel.FunnelItem;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import mod.ckenja.relocate.content.filter.RelocateBoardBlock;
-import mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock;
-import mod.ckenja.relocate.content.funnel.RelocateFunnelBlock;
+import mod.ckenja.relocate.content.funnel.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
@@ -28,9 +25,9 @@ public class RelocateBlocks {
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
-                    .blockstate(new FunnelGenerator("industrial_iron", true)::generate)
-                    .item(FunnelItem::new)
-                    .model(FunnelGenerator.itemModel("industrial_iron"))
+                    .blockstate(new RelocateFunnelGenerator("industrial_iron", true)::generate)
+                    .item(RelocateFunnelItem::new)
+                    .model(RelocateFunnelGenerator.itemModel("industrial_iron"))
                     .build()
                     .register();
 
@@ -42,7 +39,7 @@ public class RelocateBlocks {
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
-                    .blockstate(new BeltFunnelGenerator("industrial_iron")::generate)
+                    .blockstate(new RelocateBeltFunnelGenerator("industrial_iron")::generate)
                     .loot((p, b) -> p.dropOther(b, RELOCATE_FUNNEL.get()))
                     .lang("Relocate Belt Funnel")
                     .register();
