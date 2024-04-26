@@ -1,8 +1,9 @@
 plugins {
     id 'net.minecraftforge.gradle'
-    id 'org.spongepowered.mixin'
     id 'org.parchmentmc.librarian.forgegradle'
+    id 'eclipse'
     id 'maven-publish'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -162,15 +163,11 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}")
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}:api")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_minecraft_version}-${curios_version}")
-
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     minecraftLibrary 'org.jgrapht:jgrapht-core:1.5.2'
-    //minecraftLibrary 'org.jgrapht:jgrapht-io:1.5.2'
     jarJar(group: 'org.jgrapht', name: 'jgrapht-core', version: '1.5.2')
 }
 

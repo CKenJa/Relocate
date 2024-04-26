@@ -9,7 +9,7 @@ import mod.ckenja.relocate.content.filter.RelocateBoardBlock;
 import mod.ckenja.relocate.content.funnel.*;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static mod.ckenja.relocate.Relocate.REGISTRATE;
@@ -21,7 +21,7 @@ public class RelocateBlocks {
             REGISTRATE.block("relocate_funnel", RelocateFunnelBlock::new)
                     .addLayer(() -> RenderType::cutoutMipped)
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY)
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
@@ -35,7 +35,7 @@ public class RelocateBlocks {
             REGISTRATE.block("relocate_belt_funnel", p -> new RelocateBeltFunnelBlock(RelocateBlocks.RELOCATE_FUNNEL, p))
                     .addLayer(() -> RenderType::cutoutMipped)
                     .initialProperties(SharedProperties::softMetal)
-                    .properties(p -> p.color(MaterialColor.COLOR_GRAY)
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY)
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
@@ -44,6 +44,6 @@ public class RelocateBlocks {
                     .lang("Relocate Belt Funnel")
                     .register();
     public static void register(){
-        REGISTRATE.creativeModeTab(()-> AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 }
