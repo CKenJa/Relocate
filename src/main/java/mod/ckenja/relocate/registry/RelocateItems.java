@@ -12,6 +12,6 @@ public class RelocateItems {
             .lang("Kanban board")
             .register();
     public static void register(){
-        REGISTRATE.creativeModeTab(()-> AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 }

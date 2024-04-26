@@ -37,8 +37,7 @@ implements IBE<RelocateBoardEntity>, IWrenchable, ProperWaterloggedBlock {
     }
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         return !pLevel.getBlockState(pPos.relative(getConnectedDirection(pState).getOpposite()))
-                .getMaterial()
-                .isReplaceable();
+                .canBeReplaced();
     }
     @Override
     public Class<RelocateBoardEntity> getBlockEntityClass() {
