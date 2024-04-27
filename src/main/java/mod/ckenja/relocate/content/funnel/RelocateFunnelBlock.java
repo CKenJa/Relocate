@@ -4,13 +4,16 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.logistics.funnel.AbstractDirectionalFunnelBlock;
+import com.simibubi.create.content.logistics.funnel.FunnelBlock;
 import com.simibubi.create.content.logistics.funnel.FunnelBlockEntity;
 import com.simibubi.create.foundation.block.ProperWaterloggedBlock;
+import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.VecHelper;
 import mod.ckenja.relocate.registry.RelocateBlockEntityTypes;
 import mod.ckenja.relocate.registry.RelocateBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -23,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -30,10 +34,24 @@ import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class RelocateFunnelBlock extends AbstractDirectionalFunnelBlock {
+public class RelocateFunnelBlock extends FunnelBlock {
+
+    public static final EnumProperty<Shape> SHAPE = EnumProperty.create("shape", Shape.class);
+
+    public enum Shape implements StringRepresentable {
+        NEUTRAL,
+        EXTRACT,
+        COLLECT;
+
+        @Override
+        public String getSerializedName() {
+            return Lang.asId(name());
+        }
+    }
 
     public RelocateFunnelBlock(Properties properties) {
         super(properties);
+        registerDefaultState(defaultBlockState().setValue(SHAPE, Shape.NEUTRAL));
     }
 
     public BlockState getEquivalentBeltFunnel(BlockGetter world, BlockPos pos, BlockState state) {
@@ -143,7 +161,7 @@ public class RelocateFunnelBlock extends AbstractDirectionalFunnelBlock {
                 ProperWaterloggedBlock.withWater(world, getEquivalentBeltFunnel(null, null, state), pos);
         if (RelocateBeltFunnelBlock.isOnValidBelt(equivalentFunnel, world, pos))
             return equivalentFunnel.setValue(RelocateBeltFunnelBlock.SHAPE,
-                    RelocateBeltFunnelBlock.getShapeForPosition(world, pos, getFacing(state)));
+                    RelocateBeltFunnelBlock.getShapeForPosition(world, pos, getFacing(state), state.getValue(RelocateBeltFunnelBlock.SHAPE)));
         return state;
     }
 
