@@ -15,7 +15,7 @@ import static mod.ckenja.relocate.content.filter.KanbanBoardItem.getKanbanBoardI
 @Mixin(FilterItemStack.class)
 public class KanbanBoardTestMixin {
     @Inject(method = "test(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Z)Z", at = @At("TAIL"),cancellable=true,remap=false)
-    private static void relocate$test(Level world, ItemStack stack, boolean matchNBT, CallbackInfoReturnable<Boolean> cir){
+    public void relocate$test(Level world, ItemStack stack, boolean matchNBT, CallbackInfoReturnable<Boolean> cir){
         if (RelocateItems.KANBAN_BOARD.get() != stack.getItem()) {
             cir.setReturnValue(true);
         }

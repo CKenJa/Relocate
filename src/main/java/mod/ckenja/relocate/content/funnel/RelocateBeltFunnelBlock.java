@@ -42,7 +42,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 import com.simibubi.create.content.logistics.funnel.BeltFunnelBlock;
-public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock implements ISpecialBlockItemRequirement {
+
+import java.util.stream.Stream;
+
+public class RelocateBeltFunnelBlock extends BeltFunnelBlock implements ISpecialBlockItemRequirement {
+
+    private BeltFunnelBlock beltFunnelBlock;
 
     private BlockEntry<? extends RelocateFunnelBlock> parent;
 
@@ -51,7 +56,9 @@ public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock imple
     public enum Shape implements StringRepresentable {
         RETRACTED(AllShapes.BELT_FUNNEL_RETRACTED),
         EXTENDED(AllShapes.BELT_FUNNEL_EXTENDED),
-        PERPENDICULAR(AllShapes.BELT_FUNNEL_PERPENDICULAR);
+        NEUTRAL(AllShapes.BELT_FUNNEL_PERPENDICULAR),//change point,
+        PUSHING(AllShapes.BELT_FUNNEL_PERPENDICULAR),
+        PULLING(AllShapes.BELT_FUNNEL_PERPENDICULAR);
 
         VoxelShaper shaper;
 
@@ -66,7 +73,7 @@ public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock imple
     }
 
     public RelocateBeltFunnelBlock(BlockEntry<? extends RelocateFunnelBlock> parent, Properties p_i48377_1_) {
-        super(p_i48377_1_);
+        super(parent, p_i48377_1_);
         this.parent = parent;
         registerDefaultState(defaultBlockState().setValue(SHAPE, Shape.RETRACTED));
     }
@@ -98,7 +105,7 @@ public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock imple
                                         CollisionContext p_220071_4_) {
         if (p_220071_4_ instanceof EntityCollisionContext
                 && ((EntityCollisionContext) p_220071_4_).getEntity() instanceof ItemEntity
-                && (p_220071_1_.getValue(SHAPE) == Shape.PERPENDICULAR))
+                && (Stream.of(Shape.NEUTRAL, Shape.PULLING, Shape.PUSHING).anyMatch(s -> s == p_220071_1_.getValue(SHAPE))))//change point
             return AllShapes.FUNNEL_COLLISION.get(getFacing(p_220071_1_));
         return getShape(p_220071_1_, p_220071_2_, p_220071_3_, p_220071_4_);
     }
@@ -113,13 +120,12 @@ public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock imple
                 .isHorizontal() ? ctx.getClickedFace() : ctx.getHorizontalDirection();
 
         BlockState state = stateForPlacement.setValue(HORIZONTAL_FACING, facing);
-        return state.setValue(SHAPE, getShapeForPosition(world, pos, facing));
+        return state.setValue(SHAPE, getShapeForPosition(world, pos, facing, state.getValue(SHAPE)));
     }
 
-    public static Shape getShapeForPosition(BlockGetter world, BlockPos pos, Direction facing) {
+    public static Shape getShapeForPosition(BlockGetter world, BlockPos pos, Direction facing, Shape perpendicularState) {//change point, 4th arg
         BlockPos posBelow = pos.below();
         BlockState stateBelow = world.getBlockState(posBelow);
-        Shape perpendicularState = Shape.PERPENDICULAR;
         if (!AllBlocks.BELT.has(stateBelow))
             return perpendicularState;
         Direction movementFacing = stateBelow.getValue(BeltBlock.HORIZONTAL_FACING);
@@ -144,12 +150,14 @@ public class RelocateBeltFunnelBlock extends AbstractHorizontalFunnelBlock imple
             return parentState.setValue(RelocateFunnelBlock.FACING, state.getValue(HORIZONTAL_FACING));
         }
         Shape updatedShape =
-                getShapeForPosition(world, pos, state.getValue(HORIZONTAL_FACING));
+                getShapeForPosition(world, pos, state.getValue(HORIZONTAL_FACING), state.getValue(SHAPE));
         Shape currentShape = state.getValue(SHAPE);
         if (updatedShape == currentShape)
             return state;
 
         // Don't revert wrenched states
+        if (updatedShape == Shape.PUSHING && currentShape == Shape.PULLING)
+            return state;
         if (updatedShape == Shape.RETRACTED && currentShape == Shape.EXTENDED)
             return state;
 
