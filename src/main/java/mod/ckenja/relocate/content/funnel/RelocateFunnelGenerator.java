@@ -17,14 +17,12 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class RelocateFunnelGenerator extends SpecialBlockStateGen {
 
-    private String type;
-    private ResourceLocation blockTexture;
-    private boolean hasFilter;
+    private final String type;
+    private final ResourceLocation blockTexture;
 
-    public RelocateFunnelGenerator(String type, boolean hasFilter) {
+    public RelocateFunnelGenerator(String type, ResourceLocation blockTexture) {
         this.type = type;
-        this.hasFilter = hasFilter;
-        this.blockTexture = Create.asResource("block/" + type + "_block");
+        this.blockTexture = blockTexture;
     }
 
     @Override
@@ -43,38 +41,35 @@ public class RelocateFunnelGenerator extends SpecialBlockStateGen {
         String prefix = "block/funnel/";
         String powered = s.getValue(RelocateFunnelBlock.POWERED) ? "_powered" : "_unpowered";
         String closed = s.getValue(RelocateFunnelBlock.POWERED) ? "_closed" : "_open";
+        String extracting = s.getValue(RelocateFunnelBlock.EXTRACTING) ? "_push" : "_pull";
+        String neutral = s.getValue(RelocateFunnelBlock.NEUTRAL) ? "_neutral" : "_unneutral";
         Direction facing = s.getValue(RelocateFunnelBlock.FACING);
-        boolean horizontal = facing.getAxis()
-                .isHorizontal();
-        String parent = horizontal ? "horizontal" : hasFilter ? "vertical" : "vertical_filterless";
-
+        boolean horizontal = facing.getAxis().isHorizontal();
+        String parent = horizontal ? "horizontal" : "vertical";
         BlockModelBuilder model = p.models()
-                .withExistingParent("block/" + type + "_funnel_" + parent + powered,
+                .withExistingParent("block/" + type + "_funnel_" + parent + extracting + neutral + powered,
                         Create.asResource(prefix + "block_" + parent))
                 .texture("particle", blockTexture)
-                .texture("base", Create.asResource(prefix + type + "_funnel"))
-                .texture("redstone", Create.asResource(prefix + type + "_funnel" + powered))
-                .texture("direction", Create.asResource(prefix + type + "_funnel" + "_neutral"));
+                .texture("base", p.modLoc(prefix + type + "_funnel"))
+                .texture("redstone", p.modLoc(prefix + type + "_funnel" + powered))
+                .texture("direction", p.modLoc(prefix + type + "_funnel" + "_neutral"));
 
         if (horizontal)
             return model.texture("block", blockTexture);
 
-        return model.texture("frame", Create.asResource(prefix + type + "_funnel_frame"))
+        return model.texture("frame", p.modLoc(prefix + type + "_funnel_frame"))
                 .texture("open", Create.asResource(prefix + "funnel" + closed));
     }
 
     public static NonNullBiConsumer<DataGenContext<Item, RelocateFunnelItem>, RegistrateItemModelProvider> itemModel(
-            String type) {
+            String type, ResourceLocation blockTexture) {
         String prefix = "block/funnel/";
-        ResourceLocation blockTexture = Create.asResource("block/" + type + "_block");
-        return (c, p) -> {
-            p.withExistingParent("item/" + "relocate" + "_funnel", Create.asResource("block/funnel/item"))
-                    .texture("particle", blockTexture)
-                    .texture("block", blockTexture)
-                    .texture("base", Create.asResource(prefix + type + "_funnel"))
-                    .texture("direction", Create.asResource(prefix + type + "_funnel_neutral"))
-                    .texture("redstone", Create.asResource(prefix + type + "_funnel_unpowered"));
-        };
+        return (c, p) -> p.withExistingParent("item/" + "relocate" + "_funnel", Create.asResource("block/funnel/item"))
+                .texture("particle", blockTexture)
+                .texture("block", blockTexture)
+                .texture("base", p.modLoc(prefix + type + "_funnel"))
+                .texture("direction", p.modLoc(prefix + type + "_funnel_neutral"))
+                .texture("redstone", p.modLoc(prefix + type + "_funnel_unpowered"));
     }
 
 }

@@ -1,182 +1,482 @@
 {
   "variants": {
-    "facing=east,powered=false,shape=extended,waterlogged=false": {
+    "facing=east,neutral=false,powered=false,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 90
     },
-    "facing=east,powered=false,shape=extended,waterlogged=true": {
+    "facing=east,neutral=false,powered=false,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 90
     },
-    "facing=east,powered=false,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=east,neutral=false,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 90
     },
-    "facing=east,powered=false,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=east,neutral=false,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 90
     },
-    "facing=east,powered=false,shape=retracted,waterlogged=false": {
+    "facing=east,neutral=false,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=false,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=false,powered=false,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 90
     },
-    "facing=east,powered=false,shape=retracted,waterlogged=true": {
+    "facing=east,neutral=false,powered=false,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 90
     },
-    "facing=east,powered=true,shape=extended,waterlogged=false": {
+    "facing=east,neutral=false,powered=true,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 90
     },
-    "facing=east,powered=true,shape=extended,waterlogged=true": {
+    "facing=east,neutral=false,powered=true,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 90
     },
-    "facing=east,powered=true,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=east,neutral=false,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 90
     },
-    "facing=east,powered=true,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=east,neutral=false,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 90
     },
-    "facing=east,powered=true,shape=retracted,waterlogged=false": {
+    "facing=east,neutral=false,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 90
+    },
+    "facing=east,neutral=false,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 90
+    },
+    "facing=east,neutral=false,powered=true,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 90
     },
-    "facing=east,powered=true,shape=retracted,waterlogged=true": {
+    "facing=east,neutral=false,powered=true,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 90
     },
-    "facing=north,powered=false,shape=extended,waterlogged=false": {
+    "facing=east,neutral=true,powered=false,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=false,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 90
+    },
+    "facing=east,neutral=true,powered=true,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 90
+    },
+    "facing=north,neutral=false,powered=false,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered"
     },
-    "facing=north,powered=false,shape=extended,waterlogged=true": {
+    "facing=north,neutral=false,powered=false,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered"
     },
-    "facing=north,powered=false,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered"
+    "facing=north,neutral=false,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered"
     },
-    "facing=north,powered=false,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered"
+    "facing=north,neutral=false,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered"
     },
-    "facing=north,powered=false,shape=retracted,waterlogged=false": {
+    "facing=north,neutral=false,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered"
+    },
+    "facing=north,neutral=false,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered"
+    },
+    "facing=north,neutral=false,powered=false,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered"
     },
-    "facing=north,powered=false,shape=retracted,waterlogged=true": {
+    "facing=north,neutral=false,powered=false,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered"
     },
-    "facing=north,powered=true,shape=extended,waterlogged=false": {
+    "facing=north,neutral=false,powered=true,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered"
     },
-    "facing=north,powered=true,shape=extended,waterlogged=true": {
+    "facing=north,neutral=false,powered=true,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered"
     },
-    "facing=north,powered=true,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered"
+    "facing=north,neutral=false,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered"
     },
-    "facing=north,powered=true,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered"
+    "facing=north,neutral=false,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered"
     },
-    "facing=north,powered=true,shape=retracted,waterlogged=false": {
+    "facing=north,neutral=false,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered"
+    },
+    "facing=north,neutral=false,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered"
+    },
+    "facing=north,neutral=false,powered=true,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered"
     },
-    "facing=north,powered=true,shape=retracted,waterlogged=true": {
+    "facing=north,neutral=false,powered=true,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered"
     },
-    "facing=south,powered=false,shape=extended,waterlogged=false": {
+    "facing=north,neutral=true,powered=false,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered"
+    },
+    "facing=north,neutral=true,powered=false,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered"
+    },
+    "facing=north,neutral=true,powered=true,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered"
+    },
+    "facing=north,neutral=true,powered=true,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered"
+    },
+    "facing=south,neutral=false,powered=false,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 180
     },
-    "facing=south,powered=false,shape=extended,waterlogged=true": {
+    "facing=south,neutral=false,powered=false,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 180
     },
-    "facing=south,powered=false,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=south,neutral=false,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 180
     },
-    "facing=south,powered=false,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=south,neutral=false,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 180
     },
-    "facing=south,powered=false,shape=retracted,waterlogged=false": {
+    "facing=south,neutral=false,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=false,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=false,powered=false,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 180
     },
-    "facing=south,powered=false,shape=retracted,waterlogged=true": {
+    "facing=south,neutral=false,powered=false,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 180
     },
-    "facing=south,powered=true,shape=extended,waterlogged=false": {
+    "facing=south,neutral=false,powered=true,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 180
     },
-    "facing=south,powered=true,shape=extended,waterlogged=true": {
+    "facing=south,neutral=false,powered=true,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 180
     },
-    "facing=south,powered=true,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=south,neutral=false,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 180
     },
-    "facing=south,powered=true,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=south,neutral=false,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 180
     },
-    "facing=south,powered=true,shape=retracted,waterlogged=false": {
+    "facing=south,neutral=false,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 180
+    },
+    "facing=south,neutral=false,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 180
+    },
+    "facing=south,neutral=false,powered=true,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 180
     },
-    "facing=south,powered=true,shape=retracted,waterlogged=true": {
+    "facing=south,neutral=false,powered=true,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 180
     },
-    "facing=west,powered=false,shape=extended,waterlogged=false": {
+    "facing=south,neutral=true,powered=false,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=false,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 180
+    },
+    "facing=south,neutral=true,powered=true,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 180
+    },
+    "facing=west,neutral=false,powered=false,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 270
     },
-    "facing=west,powered=false,shape=extended,waterlogged=true": {
+    "facing=west,neutral=false,powered=false,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
       "y": 270
     },
-    "facing=west,powered=false,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=west,neutral=false,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 270
     },
-    "facing=west,powered=false,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_unpowered",
+    "facing=west,neutral=false,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
       "y": 270
     },
-    "facing=west,powered=false,shape=retracted,waterlogged=false": {
+    "facing=west,neutral=false,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=false,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=false,powered=false,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 270
     },
-    "facing=west,powered=false,shape=retracted,waterlogged=true": {
+    "facing=west,neutral=false,powered=false,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
       "y": 270
     },
-    "facing=west,powered=true,shape=extended,waterlogged=false": {
+    "facing=west,neutral=false,powered=true,shape=extended,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 270
     },
-    "facing=west,powered=true,shape=extended,waterlogged=true": {
+    "facing=west,neutral=false,powered=true,shape=extended,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_extended_powered",
       "y": 270
     },
-    "facing=west,powered=true,shape=perpendicular,waterlogged=false": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=west,neutral=false,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 270
     },
-    "facing=west,powered=true,shape=perpendicular,waterlogged=true": {
-      "model": "relocate:block/relocate_belt_funnel_perpendicular_powered",
+    "facing=west,neutral=false,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
       "y": 270
     },
-    "facing=west,powered=true,shape=retracted,waterlogged=false": {
+    "facing=west,neutral=false,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 270
+    },
+    "facing=west,neutral=false,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 270
+    },
+    "facing=west,neutral=false,powered=true,shape=retracted,waterlogged=false": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 270
     },
-    "facing=west,powered=true,shape=retracted,waterlogged=true": {
+    "facing=west,neutral=false,powered=true,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=false,shape=retracted,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_unpowered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=extended,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=extended,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_extended_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=pulling,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=pulling,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pulling_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=pushing,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=pushing,waterlogged=true": {
+      "model": "relocate:block/relocate_belt_funnel_pushing_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=retracted,waterlogged=false": {
+      "model": "relocate:block/relocate_belt_funnel_retracted_powered",
+      "y": 270
+    },
+    "facing=west,neutral=true,powered=true,shape=retracted,waterlogged=true": {
       "model": "relocate:block/relocate_belt_funnel_retracted_powered",
       "y": 270
     }

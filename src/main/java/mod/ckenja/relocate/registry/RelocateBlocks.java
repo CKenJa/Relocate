@@ -2,7 +2,7 @@ package mod.ckenja.relocate.registry;
 
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.content.logistics.funnel.FunnelItem;
+import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import mod.ckenja.relocate.content.filter.RelocateBoardBlock;
@@ -25,10 +25,11 @@ public class RelocateBlocks {
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
-                    .blockstate(new RelocateFunnelGenerator("industrial_iron", true)::generate)
+                    .blockstate(new RelocateFunnelGenerator("relocate", Create.asResource("block/industrial_iron_block"))::generate)
                     .item(RelocateFunnelItem::new)
-                    .model(RelocateFunnelGenerator.itemModel("industrial_iron"))
+                    .model(RelocateFunnelGenerator.itemModel("relocate", Create.asResource("block/industrial_iron_block")))
                     .build()
+                    .lang("Relocate Belt Funnel")
                     .register();
 
     public static final BlockEntry<RelocateBeltFunnelBlock> RELOCATE_BELT_FUNNEL =
@@ -39,7 +40,7 @@ public class RelocateBlocks {
                             .sound(SoundType.NETHERITE_BLOCK))
                     .transform(pickaxeOnly())
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
-                    .blockstate(new RelocateBeltFunnelGenerator("industrial_iron")::generate)
+                    .blockstate(new RelocateBeltFunnelGenerator("relocate", Create.asResource("block/industrial_iron_block"))::generate)
                     .loot((p, b) -> p.dropOther(b, RELOCATE_FUNNEL.get()))
                     .lang("Relocate Belt Funnel")
                     .register();
