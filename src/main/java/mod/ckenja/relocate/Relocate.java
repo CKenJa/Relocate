@@ -26,11 +26,12 @@ public class Relocate {
 
     public Relocate(){
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        REGISTRATE.registerEventListeners(modEventBus);
+
+        RelocateBlocks.register();
         RelocateItems.register();
         RelocateMenuTypes.register();
-        RelocateBlocks.register();
         RelocateBlockEntityTypes.register();
-        REGISTRATE.registerEventListeners(modEventBus);
         /*MinecraftForge.EVENT_BUS.addGenericListener(RelocateFunnelBlockEntity.class,
                 (BlockEntityBehaviourEvent<RelocateFunnelBlockEntity> event) ->
                         event.attach(new SmartFluidTankBehaviour(SmartFluidTankBehaviour.INPUT, event.getBlockEntity(), 2, 1000, true)));*/

@@ -2,23 +2,13 @@ package mod.ckenja.relocate.content.funnel;
 
 import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
 import com.simibubi.create.content.kinetics.belt.BeltHelper;
-import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
 import com.simibubi.create.content.logistics.funnel.FunnelBlockEntity;
-import com.simibubi.create.foundation.blockEntity.behaviour.filtering.FilteringBehaviour;
-import com.simibubi.create.foundation.blockEntity.behaviour.inventory.InvManipulationBehaviour;
-import com.simibubi.create.foundation.blockEntity.behaviour.inventory.VersionedInventoryTrackerBehaviour;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.SoftOverride;
 import org.spongepowered.asm.mixin.gen.Invoker;
-
-import java.lang.ref.WeakReference;
 
 import static mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock.SHAPE;
 import static mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock.Shape;
@@ -32,15 +22,7 @@ public class RelocateFunnelBlockEntity extends FunnelBlockEntity {
     @Invoker("activateExtractingBeltFunnel")
     void activateExtractingBeltFunnel() {}
 
-    @Invoker("handleDirectBeltInput")
-    ItemStack handleDirectBeltInput(TransportedItemStack transportedItemStack, Direction direction, boolean b){return null;};
-
-    private FilteringBehaviour filtering;
-    private InvManipulationBehaviour invManipulation;
-    private VersionedInventoryTrackerBehaviour invVersionTracker;
     private int extractionCooldown;
-
-    private WeakReference<ItemEntity> lastObserved; // In-world Extractors only
 
     //独自Mode
     public enum Mode {
@@ -65,8 +47,6 @@ public class RelocateFunnelBlockEntity extends FunnelBlockEntity {
                 return Mode.TAKING_FROM_BELT;
             if (shape == Shape.PUSHING)
                 return Mode.PUSHING_TO_BELT;
-            if(shape == Shape.NEUTRAL) //change point, have NEUTRAL shape in belt funnel
-                return Mode.NEUTRAL_WITH_BELT;
 
             BeltBlockEntity belt = BeltHelper.getSegmentBE(level, worldPosition.below());
             if (belt != null)
@@ -102,16 +82,5 @@ public class RelocateFunnelBlockEntity extends FunnelBlockEntity {
 			activateExtractingBeltFunnel();
 		if (mode == Mode.NEUTRAL)//change point
 			activateExtractor();
-    }
-
-    private boolean supportsDirectBeltInput(Direction side) {
-        BlockState blockState = getBlockState();
-        if (blockState == null)
-            return false;
-        if (!(blockState.getBlock() instanceof RelocateFunnelBlock))
-            return false;
-        if (blockState.getValue(RelocateFunnelBlock.SHAPE) != RelocateFunnelBlock.Shape.EXTRACT)
-            return false;
-        return RelocateFunnelBlock.getFunnelFacing(blockState) == Direction.UP;
     }
 }

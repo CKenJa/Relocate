@@ -1,7 +1,7 @@
 package mod.ckenja.relocate.content.funnel;
 
 import com.simibubi.create.Create;
-import mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock.Shape;
+import com.simibubi.create.content.logistics.funnel.BeltFunnelBlock;
 import com.simibubi.create.foundation.data.SpecialBlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -14,8 +14,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 
 public class RelocateBeltFunnelGenerator extends SpecialBlockStateGen {
 
-    private String type;
-    private ResourceLocation materialBlockTexture;
+    private final String type;
+    private final ResourceLocation materialBlockTexture;
 
     public RelocateBeltFunnelGenerator(String type) {
         this.type = type;
@@ -36,7 +36,7 @@ public class RelocateBeltFunnelGenerator extends SpecialBlockStateGen {
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
                                                 BlockState state) {
         String prefix = "block/funnel/";
-        Shape shape = state.getValue(RelocateBeltFunnelBlock.SHAPE);
+        BeltFunnelBlock.Shape shape = state.getValue(BeltFunnelBlock.SHAPE);
         String serializedShape = shape.getSerializedName();
         String shapeName = "perpendicular".equals(serializedShape) ? "pulling" : serializedShape;
         boolean powered = state.getOptionalValue(BlockStateProperties.POWERED)
