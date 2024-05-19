@@ -2,7 +2,7 @@
   "parent": "create:block/funnel/block_vertical",
   "textures": {
     "base": "relocate:block/funnel/relocate_funnel",
-    "direction": "relocate:block/funnel/relocate_funnel_neutral",
+    "direction": "relocate:block/funnel/relocate_funnel_dual",
     "frame": "relocate:block/funnel/relocate_funnel_frame",
     "open": "create:block/funnel/funnel_open",
     "particle": "create:block/industrial_iron_block",

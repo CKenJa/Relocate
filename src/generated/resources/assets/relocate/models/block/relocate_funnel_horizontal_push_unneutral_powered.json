@@ -3,7 +3,7 @@
   "textures": {
     "base": "relocate:block/funnel/relocate_funnel",
     "block": "create:block/industrial_iron_block",
-    "direction": "relocate:block/funnel/relocate_funnel_neutral",
+    "direction": "relocate:block/funnel/relocate_funnel_push",
     "particle": "create:block/industrial_iron_block",
     "redstone": "relocate:block/funnel/relocate_funnel_powered"
   }

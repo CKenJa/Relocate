@@ -52,7 +52,7 @@ public class RelocateFunnelGenerator extends SpecialBlockStateGen {
                 .texture("particle", blockTexture)
                 .texture("base", p.modLoc(prefix + type + "_funnel"))
                 .texture("redstone", p.modLoc(prefix + type + "_funnel" + powered))
-                .texture("direction", p.modLoc(prefix + type + "_funnel" + "_neutral"));
+                .texture("direction", p.modLoc(prefix + type + "_funnel" + (s.getValue(RelocateFunnelBlock.NEUTRAL) ? "_dual" : extracting)));
 
         if (horizontal)
             return model.texture("block", blockTexture);

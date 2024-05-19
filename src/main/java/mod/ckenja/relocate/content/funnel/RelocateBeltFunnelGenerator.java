@@ -36,12 +36,13 @@ public class RelocateBeltFunnelGenerator extends SpecialBlockStateGen {
                                                 BlockState state) {
         String prefix = "block/funnel/";
         Shape shape = state.getValue(RelocateBeltFunnelBlock.SHAPE);
+        String neutral = state.getValue(RelocateFunnelBlock.NEUTRAL) ? "_neutral" : "_unneutral";
         String shapeName = shape.getSerializedName();
         boolean powered = state.getOptionalValue(BlockStateProperties.POWERED)
                 .orElse(false);
         String poweredSuffix = powered ? "_powered" : "_unpowered";
-        String shapeSuffix = shape == Shape.PULLING ? "_pull" : shape == Shape.PUSHING ? "_push" : "_neutral";
-        String name = ctx.getName() + "_" + shapeName + poweredSuffix;
+        String shapeSuffix = state.getValue(RelocateFunnelBlock.NEUTRAL) ? "_dual" : shape == Shape.PULLING ? "_pull" : shape == Shape.PUSHING ? "_push" : "_neutral";
+        String name = ctx.getName() + "_" + shapeName + neutral + poweredSuffix;
 
         return prov.models()
                 .withExistingParent(name, Create.asResource("block/belt_funnel/block_" + shapeName))

@@ -29,7 +29,7 @@ public class RelocateBlocks {
                     .item(RelocateFunnelItem::new)
                     .model(RelocateFunnelGenerator.itemModel("relocate", Create.asResource("block/industrial_iron_block")))
                     .build()
-                    .lang("Relocate Belt Funnel")
+                    .lang("Relocate Funnel")
                     .register();
 
     public static final BlockEntry<RelocateBeltFunnelBlock> RELOCATE_BELT_FUNNEL =
