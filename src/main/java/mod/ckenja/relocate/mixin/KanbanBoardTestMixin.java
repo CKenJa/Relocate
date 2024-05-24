@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static mod.ckenja.relocate.content.filter.KanbanBoardItem.getKanbanBoardID;
 
-@Mixin(FilterItemStack.class)
+/*@Mixin(FilterItemStack.class)
 public class KanbanBoardTestMixin {
     @Inject(method = "test(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Z)Z", at = @At("TAIL"),cancellable=true,remap=false)
     public void relocate$test(Level world, ItemStack stack, boolean matchNBT, CallbackInfoReturnable<Boolean> cir){
@@ -21,4 +21,4 @@ public class KanbanBoardTestMixin {
         }
         //Relocate.RELOCATE_SAVED_DATA.getNode(getKanbanBoardID(filter)).removeCountedItemStack(stack);
     }
-}
+}*/

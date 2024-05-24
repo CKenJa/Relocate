@@ -1,86 +1,91 @@
 package mod.ckenja.relocate.content.funnel;
 
-import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
-import com.simibubi.create.content.kinetics.belt.BeltHelper;
+import com.simibubi.create.api.event.BlockEntityBehaviourEvent;
+import com.simibubi.create.content.kinetics.belt.behaviour.DirectBeltInputBehaviour;
+import com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack;
+import com.simibubi.create.content.logistics.funnel.AbstractFunnelBlock;
+import com.simibubi.create.content.logistics.funnel.FunnelBlock;
 import com.simibubi.create.content.logistics.funnel.FunnelBlockEntity;
+import com.simibubi.create.content.logistics.funnel.FunnelFilterSlotPositioning;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
+import com.simibubi.create.foundation.blockEntity.behaviour.filtering.FilteringBehaviour;
+import com.simibubi.create.foundation.blockEntity.behaviour.inventory.VersionedInventoryTrackerBehaviour;
+import com.simibubi.create.foundation.utility.BlockFace;
+import mod.ckenja.relocate.mixin.FunnelBlockEntityAccessor;
+import mod.ckenja.relocate.registry.RelocateBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Invoker;
 
-import static mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock.SHAPE;
-import static mod.ckenja.relocate.content.funnel.RelocateBeltFunnelBlock.Shape;
+import java.util.List;
 
-@Mixin(FunnelBlockEntity.class)
 public class RelocateFunnelBlockEntity extends FunnelBlockEntity {
 
-    @Invoker("activateExtractor")
-    void activateExtractor() {}
-
-    @Invoker("activateExtractingBeltFunnel")
-    void activateExtractingBeltFunnel() {}
-
-    private int extractionCooldown;
-
-    //独自Mode
-    public enum Mode {
-        INVALID, PAUSED, PUSHING_TO_BELT, TAKING_FROM_BELT, NEUTRAL_WITH_BELT, COLLECT, EXTRACT, NEUTRAL
+    enum Mode {
+        INVALID, PAUSED, COLLECT, PUSHING_TO_BELT, TAKING_FROM_BELT, EXTRACT
     }
+
+    private final FunnelBlockEntityAccessor access = (FunnelBlockEntityAccessor) this;
 
     public RelocateFunnelBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        extractionCooldown = 0;
-    }
-
-    public Mode determineCurrentRelocateMode(){
-        BlockState state = getBlockState();
-        if (!RelocateFunnelBlock.isFunnel(state))
-            return Mode.INVALID;
-        if (state.getOptionalValue(BlockStateProperties.POWERED)
-                .orElse(false))
-            return Mode.PAUSED;
-        if (state.getBlock() instanceof RelocateBeltFunnelBlock) {
-            Shape shape = state.getValue(SHAPE);
-            if (shape == Shape.PULLING)
-                return Mode.TAKING_FROM_BELT;
-            if (shape == Shape.PUSHING)
-                return Mode.PUSHING_TO_BELT;
-
-            BeltBlockEntity belt = BeltHelper.getSegmentBE(level, worldPosition.below());
-            if (belt != null)
-                return belt.getMovementFacing() == state.getValue(RelocateBeltFunnelBlock.HORIZONTAL_FACING)
-                        ? Mode.PUSHING_TO_BELT
-                        : Mode.TAKING_FROM_BELT;
-            return Mode.INVALID;
-        }
-        if (state.getBlock() instanceof RelocateFunnelBlock)
-            return Mode.NEUTRAL;//TODO: ほかのモードも
-        return Mode.INVALID;
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        Mode mode = determineCurrentRelocateMode();
-        if (level.isClientSide)
-            return;
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
+        //Insertを逆にする。
+        access.setInvManipulation(new RelocateInvManipulationBehaviour(this, (w, p, s) -> new BlockFace(p, AbstractFunnelBlock.getFunnelFacing(s)
+                .getOpposite())));
+        behaviours.add(access.invManipulation());
 
-        // Redstone resets the extraction cooldown
-        if (mode == Mode.PAUSED)
-            extractionCooldown = 0;
-        if (mode == Mode.TAKING_FROM_BELT)
-            return;
+        access.setInvVersionTracker(new VersionedInventoryTrackerBehaviour(this));
+        behaviours.add(access.invVersionTracker());
 
-        if (extractionCooldown > 0) {
-            extractionCooldown--;
-            return;
-        }
+        //RelocateFunnelでFilterBehaviourが動くように
+        access.setFiltering(new FilteringBehaviour(this, new FunnelFilterSlotPositioning())
+                .showCountWhen(access::supportsAmountOnFilter)
+                .onlyActiveWhen(this::supportsFiltering)
+                .withCallback($ -> access.invVersionTracker().reset())
+        );
+        behaviours.add(access.filtering());
 
-		if (mode == Mode.PUSHING_TO_BELT || mode == Mode.NEUTRAL_WITH_BELT)//change point
-			activateExtractingBeltFunnel();
-		if (mode == Mode.NEUTRAL)//change point
-			activateExtractor();
+        //BeltInsertBehaviourの搬入条件を変える。もうaddBehaviourをOverrideしちゃえよ
+        behaviours.add(new DirectBeltInputBehaviour(this).onlyInsertWhen(this::supportsDirectBeltInput)
+                .setInsertionHandler(access::handleDirectBeltInput));
+    }
+
+    private boolean supportsDirectBeltInput(Direction side) {
+        BlockState blockState = getBlockState();
+        if (blockState == null)
+            return false;
+        if (!(blockState.getBlock() instanceof RelocateFunnelBlock))
+            return false;
+        if (blockState.getValue(FunnelBlock.EXTRACTING) || blockState.getValue(RelocateFunnelBlock.NEUTRAL))
+            return false;
+        return FunnelBlock.getFunnelFacing(blockState) == Direction.UP;
+    }
+
+    private boolean supportsFiltering() {
+        BlockState blockState = getBlockState();
+        return RelocateBlocks.RELOCATE_BELT_FUNNEL.has(blockState) || RelocateBlocks.RELOCATE_FUNNEL.has(blockState);
+    }
+
+    public static void handleBlockEntityBehaviourEvent(BlockEntityBehaviourEvent<RelocateFunnelBlockEntity> event){
+        //MixinでinvManipulationBehaviourを改変するより、継承したやつをMixinで入れたほうがいいかなって。そこんとこどうなの?
+        /*event.remove(InvManipulationBehaviour.TYPE);
+        FunnelBlockEntityAccessor access = (FunnelBlockEntityAccessor) event.getBlockEntity();
+        access.setInvManipulation(new RelocateInvManipulationBehaviour(event.getBlockEntity(), (w, p, s) -> new BlockFace(p, AbstractFunnelBlock.getFunnelFacing(s)
+                .getOpposite())));
+        event.attach(access.invManipulation());
+
+        //RelocateFunnelでFilterBehaviourが動くように
+        BlockEntityBehaviour filtering = event.remove(FilteringBehaviour.TYPE);
+        ((FilteringBehaviour)filtering).onlyActiveWhen(()->{
+            BlockState blockState = event.getBlockState();
+            return RelocateBlocks.RELOCATE_BELT_FUNNEL.has(blockState) || RelocateBlocks.RELOCATE_FUNNEL.has(blockState);
+        });
+        event.attach(filtering);*/
     }
 }

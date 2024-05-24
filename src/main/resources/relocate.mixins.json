@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "relocate.refmap.json",
   "mixins": [
-    "KanbanBoardTestMixin",
-    "RelocateFunnelBlockMixin"
+    "FunnelBlockEntityAccessor"
   ],
   "client": [],
   "injectors": {
