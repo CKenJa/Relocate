@@ -1,9 +1,9 @@
-// 1.20.1	2024-05-20T20:22:56.9345123	Registrate Provider for relocate [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-06-09T22:27:35.278314	Registrate Provider for relocate [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 1545feef58fa15c6c11a8a0f4e1a542993f04139 assets/relocate/blockstates/relocate_belt_funnel.json
 564c041fdb34be26179a6453de76299074b4c1e8 assets/relocate/blockstates/relocate_board.json
 c500557b09615c5d31c79a2149acfc4543542754 assets/relocate/blockstates/relocate_funnel.json
-535020c99d7ca8d9bdfd53f39bb24cf1526e170b assets/relocate/lang/en_ud.json
-2a426d3bac5d57e0a1105732cfc8451fb5d6161c assets/relocate/lang/en_us.json
+7ec7f01cd34faa393700a469f6a42b1da42ded3c assets/relocate/lang/en_ud.json
+6c32722b33ea78e169dff5fb5aa1ebefd806096d assets/relocate/lang/en_us.json
 803210538043c5d4ce67f220beaa8cfdf8eb6371 assets/relocate/models/block/relocate_belt_funnel_extended_neutral_powered.json
 298fb1a621650294562b6f3ab95cf13f64ee998f assets/relocate/models/block/relocate_belt_funnel_extended_neutral_unpowered.json
 47df2492ecc566ab3819a72fb97a6568de223bae assets/relocate/models/block/relocate_belt_funnel_extended_unneutral_powered.json
@@ -37,7 +37,6 @@ be5a0643f4a8097bf7e85af441703add355dba5e assets/relocate/models/block/relocate_f
 2475aff0fa7ded3e036f0aabf7efd4ff4b02f2c8 assets/relocate/models/block/relocate_funnel_vertical_push_neutral_unpowered.json
 09fbe84d1b68960bde30adb6d15501e4f5c9a464 assets/relocate/models/block/relocate_funnel_vertical_push_unneutral_powered.json
 aee57dd0ea309436471a28f72b18fe806b31eb88 assets/relocate/models/block/relocate_funnel_vertical_push_unneutral_unpowered.json
-20ab96569ee94b1a98ce6193aaa16abde6755fd2 assets/relocate/models/item/kanban_board.json
 9c65916b7e52a9d65c6eba4db532f7203e139b84 assets/relocate/models/item/relocate_funnel.json
 62d5a4cda232bf951147e266ff0a5ceeb6e72ed1 data/create/tags/blocks/safe_nbt.json
 62d5a4cda232bf951147e266ff0a5ceeb6e72ed1 data/minecraft/tags/blocks/mineable/pickaxe.json

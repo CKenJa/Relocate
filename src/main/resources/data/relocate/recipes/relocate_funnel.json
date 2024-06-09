@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "b": {
+      "item": "create:brass_funnel"
+    },
+    "m": {
+      "item": "create:metal_girder"
+    }
+  },
+  "pattern": [
+    "b",
+    "m",
+    "b"
+  ],
+  "result": {
+    "item": "relocate:relocate_funnel"
+  }
+}

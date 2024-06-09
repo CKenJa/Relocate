@@ -16,7 +16,7 @@ public class RelocateCreativeModeTabs {
     private static final DeferredRegister<CreativeModeTab> REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Relocate.ID);
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = REGISTER.register("main", ()-> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.relocate"))
-            .withTabsAfter(AllCreativeModeTabs.PALETTES_CREATIVE_TAB.getKey())
+            .withTabsBefore(AllCreativeModeTabs.PALETTES_CREATIVE_TAB.getKey())
             .icon(RelocateBlocks.RELOCATE_FUNNEL::asStack)
             .displayItems((params,output)-> output.acceptAll(Stream.of(
                     RelocateBlocks.RELOCATE_FUNNEL
