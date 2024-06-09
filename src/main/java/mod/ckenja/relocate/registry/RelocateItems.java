@@ -1,7 +1,7 @@
 package mod.ckenja.relocate.registry;
 
-import com.simibubi.create.AllCreativeModeTabs;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import mod.ckenja.relocate.Relocate;
 import mod.ckenja.relocate.content.filter.KanbanBoardItem;
 
 import static mod.ckenja.relocate.Relocate.REGISTRATE;
@@ -12,6 +12,6 @@ public class RelocateItems {
             .lang("Kanban board")
             .register();
     public static void register(){
-        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        Relocate.REGISTRATE.setCreativeTab(RelocateCreativeModeTabs.MAIN_TAB);
     }
 }

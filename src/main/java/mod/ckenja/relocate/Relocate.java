@@ -25,9 +25,10 @@ public class Relocate {
         REGISTRATE.registerEventListeners(modEventBus);
 
         RelocateBlocks.register();
-        RelocateItems.register();
-        RelocateMenuTypes.register();
+        //RelocateItems.register();
+        //RelocateMenuTypes.register();
         RelocateBlockEntityTypes.register();
+        RelocateCreativeModeTabs.register(modEventBus);
         MinecraftForge.EVENT_BUS.addGenericListener(RelocateFunnelBlockEntity.class,RelocateFunnelBlockEntity::handleBlockEntityBehaviourEvent);
     }
 

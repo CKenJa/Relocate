@@ -1,10 +1,10 @@
 package mod.ckenja.relocate.registry;
 
-import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import mod.ckenja.relocate.Relocate;
 import mod.ckenja.relocate.content.filter.RelocateBoardBlock;
 import mod.ckenja.relocate.content.funnel.*;
 import net.minecraft.client.renderer.RenderType;
@@ -45,6 +45,6 @@ public class RelocateBlocks {
                     .lang("Relocate Belt Funnel")
                     .register();
     public static void register(){
-        REGISTRATE.setCreativeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB);
+        Relocate.REGISTRATE.setCreativeTab(RelocateCreativeModeTabs.MAIN_TAB);
     }
 }
