@@ -13,10 +13,12 @@ import net.minecraft.world.level.material.MapColor;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static mod.ckenja.relocate.Relocate.REGISTRATE;
+
 public class RelocateBlocks {
     public static final BlockEntry<RelocateBoardBlock> RELOCATE_BOARD = REGISTRATE.block("relocate_board", RelocateBoardBlock::new)
             .lang("Relocate Board")
             .register();
+
     public static final BlockEntry<RelocateFunnelBlock> RELOCATE_FUNNEL =
             REGISTRATE.block("relocate_funnel", RelocateFunnelBlock::new)
                     .addLayer(() -> RenderType::cutoutMipped)

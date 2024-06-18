@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import com.tterrag.registrate.providers.ProviderType;
 import mod.ckenja.relocate.content.funnel.RelocateFunnelBlockEntity;
+import mod.ckenja.relocate.infrastructure.networking.RelocatePackets;
 import mod.ckenja.relocate.registry.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +43,7 @@ public class Relocate {
         //RelocateMenuTypes.register();
         RelocateBlockEntityTypes.register();
         RelocateCreativeModeTabs.register(modEventBus);
+        RelocatePackets.registerPackets();
         MinecraftForge.EVENT_BUS.addGenericListener(RelocateFunnelBlockEntity.class,RelocateFunnelBlockEntity::handleBlockEntityBehaviourEvent);
         REGISTRATE.addDataGenerator(ProviderType.LANG, prov->{
             provideDefaultLang("interface", prov::add);
