@@ -1,0 +1,7 @@
+{
+  "block.relocate.relocate_belt_funnel": "Relocate Belt Funnel",
+  "block.relocate.relocate_board": "Relocate Board",
+  "block.relocate.relocate_funnel": "Relocate Funnel",
+  "block.relocate.relocate_funnel.tooltip.summary": "Funnel for compact and convenient warehouse! Collect items set to filter from the attached storage blocks and remove items that are not.",
+  "itemGroup.relocate": "Relocate"
+}
